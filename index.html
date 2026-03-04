@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>究極質感名片</title>
+    <style>
+        :root {
+            /* 淺色模式：暖色流沙 */
+            --bg-color: linear-gradient(-45deg, #669BBC);
+            --card-bg: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        [data-theme="dark"] {
+            /* 深色模式：深邃夜空 */
+            --bg-color: linear-gradient(-45deg, #BC6C25);
+            --card-bg: rgba(0, 0, 0, 0.4);
+            --text-color: #e0e0e0;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.8s ease, transform 0.3s ease;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-color);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            font-family: 'PingFang TC', sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .theme-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 60px 40px;
+            text-align: center;
+            color: var(--text-color);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; }
+        p { font-weight: 300; opacity: 0.8; margin-bottom: 30px; }
+
+        .btn {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn:hover {
+            background: white;
+            color: #333;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="theme-btn" onclick="toggleTheme()" id="btnText">切換至深色</button>
+
+    <div class="glass-card">
+        <div class="avatar">✨</div>
+        <h1>知媒體</h1>
+        <p>我是老洪。<br>今天你想聊些什麼呢?</p>
+        <img src="photo1.jpg" style="width:200px; border-radius:10px;">
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn">我的作品</a>
+        
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.documentElement;
+            const btn = document.getElementById('btnText');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btn.innerHTML = '切換至深色';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerHTML = '切換至淺色';
+            }
+        }
+    </script>
+</body>
+</html>
