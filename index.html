@@ -6,16 +6,18 @@
     <title>知媒體 - 嘟比的作品集</title>
     <style>
         :root {
-            --bg-color: linear-gradient(-45deg, #669BBC, #ADC178, #DDE5B6, #669BBC);
-            --card-bg: rgba(255, 255, 255, 0.2);
-            --text-color: #ffffff;
-            --glass-border: rgba(255, 255, 255, 0.3);
+            /* 調整背景漸層，讓顏色稍微深一點點 */
+            --bg-color: linear-gradient(-45deg, #5D8AA8, #8FB996, #A3B18A, #5D8AA8);
+            /* 提高卡片背景的不透明度 (0.2 -> 0.6)，文字會更清晰 */
+            --card-bg: rgba(255, 255, 255, 0.6); 
+            --text-color: #222222; /* 深灰色字體 */
+            --glass-border: rgba(255, 255, 255, 0.4);
         }
 
         [data-theme="dark"] {
             --bg-color: linear-gradient(-45deg, #BC6C25, #DDA15E, #283618, #BC6C25);
-            --card-bg: rgba(0, 0, 0, 0.4);
-            --text-color: #e0e0e0;
+            --card-bg: rgba(0, 0, 0, 0.5);
+            --text-color: #f0f0f0;
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -27,16 +29,15 @@
         }
 
         body {
-            /* 修正：將 overflow 改為 auto，並讓高度隨內容增長 */
             min-height: 100vh;
             height: auto; 
             display: flex;
-            flex-direction: column; /* 讓內容垂直排列 */
+            flex-direction: column;
             align-items: center;
             background: var(--bg-color);
             background-size: 400% 400%;
             animation: gradientMove 15s ease infinite;
-            font-family: 'PingFang TC', sans-serif;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             overflow-y: auto; 
             padding: 40px 0;
         }
@@ -48,17 +49,18 @@
         }
 
         .theme-btn {
-            position: fixed; /* 改為固定在右上角 */
+            position: fixed;
             top: 20px;
             right: 20px;
             background: var(--card-bg);
             border: 1px solid var(--glass-border);
-            color: white;
+            color: var(--text-color); /* 按鈕文字也隨主題變化 */
             padding: 10px 15px;
             border-radius: 50px;
             cursor: pointer;
             backdrop-filter: blur(10px);
             z-index: 100;
+            font-weight: bold;
         }
 
         .glass-card {
@@ -70,10 +72,10 @@
             padding: 40px;
             text-align: center;
             color: var(--text-color);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             width: 90%;
             max-width: 400px;
-            margin-bottom: 50px; /* 與下方影片區隔開 */
+            margin-bottom: 50px;
         }
 
         .avatar {
@@ -86,30 +88,39 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        h1 { font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; }
-        p { font-weight: 300; opacity: 0.8; margin-bottom: 20px; }
+        h1 { 
+            font-weight: 600; 
+            letter-spacing: 2px; 
+            margin-bottom: 10px;
+            /* 加入微弱文字陰影增加辨識度 */
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5); 
+        }
+        
+        [data-theme="dark"] h1 { text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+        p { font-weight: 400; line-height: 1.6; margin-bottom: 20px; }
 
         .btn {
             display: block;
             text-decoration: none;
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
+            color: white; /* 按鈕內的字保持白色 */
+            background: #4A7C59; /* 給按鈕一個顯眼的底色 */
             border: 1px solid var(--glass-border);
             padding: 12px;
             border-radius: 15px;
             margin-bottom: 15px;
             font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .btn:hover {
-            background: white;
-            color: #333;
+            background: #355E42;
             transform: scale(1.05);
         }
 
-        /* 影片區排版 */
         .video-container {
             width: 90%;
             max-width: 600px;
@@ -120,20 +131,23 @@
             background: var(--card-bg);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 15px;
+            padding: 20px;
             margin-bottom: 30px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .video-item p {
-            margin-bottom: 10px;
-            font-weight: 500;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--text-color);
         }
 
         video {
             width: 100%;
             border-radius: 10px;
             display: block;
+            background: #000; /* 影片載入前顯示黑色底 */
         }
     </style>
 </head>
@@ -145,41 +159,41 @@
         <div class="avatar">✨</div>
         <h1>知媒體</h1>
         <p>你好!我是嘟比。<br>歡迎常上來看我的作品</p>
-        <img src="photo1.jpg" style="width:100%; max-width:200px; border-radius:10px; margin-bottom: 20px;">
-        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">我的作品</a>
+        <img src="photo1.jpg" alt="嘟比的照片" style="width:100%; max-width:200px; border-radius:10px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">我的影音頻道</a>
     </div>
 
     <div class="video-container">
         <div class="video-item">
-            <p>No1</p>
+            <p>作品 No.1</p>
             <video autoplay loop muted playsinline>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-item">
-            <p>No2</p>
+            <p>作品 No.2</p>
             <video autoplay loop muted playsinline>
                 <source src="洪可樂2.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-item">
-            <p>No3</p>
+            <p>作品 No.3</p>
             <video autoplay loop muted playsinline>
                 <source src="嘟可樂1.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-item">
-            <p>No4</p>
+            <p>作品 No.4</p>
             <video autoplay loop muted playsinline>
                 <source src="嘟可樂2.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-item">
-            <p>No5</p>
+            <p>作品 No.5</p>
             <video autoplay loop muted playsinline>
                 <source src="嘟可樂3.mp4" type="video/mp4">
             </video>
