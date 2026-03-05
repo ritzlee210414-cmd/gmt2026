@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>究極質感名片</title>
+    <title>知媒體 - 老洪的作品集</title>
     <style>
         :root {
-            /* 淺色模式：暖色流沙 */
-            --bg-color: linear-gradient(-45deg, #669BBC);
+            --bg-color: linear-gradient(-45deg, #669BBC, #ADC178, #DDE5B6, #669BBC);
             --card-bg: rgba(255, 255, 255, 0.2);
             --text-color: #ffffff;
             --glass-border: rgba(255, 255, 255, 0.3);
         }
 
         [data-theme="dark"] {
-            /* 深色模式：深邃夜空 */
-            --bg-color: linear-gradient(-45deg, #BC6C25);
+            --bg-color: linear-gradient(-45deg, #BC6C25, #DDA15E, #283618, #BC6C25);
             --card-bg: rgba(0, 0, 0, 0.4);
             --text-color: #e0e0e0;
             --glass-border: rgba(255, 255, 255, 0.1);
@@ -29,15 +27,18 @@
         }
 
         body {
-            height: 100vh;
+            /* 修正：將 overflow 改為 auto，並讓高度隨內容增長 */
+            min-height: 100vh;
+            height: auto; 
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* 讓內容垂直排列 */
             align-items: center;
             background: var(--bg-color);
             background-size: 400% 400%;
             animation: gradientMove 15s ease infinite;
             font-family: 'PingFang TC', sans-serif;
-            overflow: hidden;
+            overflow-y: auto; 
+            padding: 40px 0;
         }
 
         @keyframes gradientMove {
@@ -47,7 +48,7 @@
         }
 
         .theme-btn {
-            position: absolute;
+            position: fixed; /* 改為固定在右上角 */
             top: 20px;
             right: 20px;
             background: var(--card-bg);
@@ -66,11 +67,13 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 40px;
-            padding: 60px 40px;
+            padding: 40px;
             text-align: center;
             color: var(--text-color);
             box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            width: 350px;
+            width: 90%;
+            max-width: 400px;
+            margin-bottom: 50px; /* 與下方影片區隔開 */
         }
 
         .avatar {
@@ -83,11 +86,10 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         h1 { font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; }
-        p { font-weight: 300; opacity: 0.8; margin-bottom: 30px; }
+        p { font-weight: 300; opacity: 0.8; margin-bottom: 20px; }
 
         .btn {
             display: block;
@@ -99,7 +101,6 @@
             border-radius: 15px;
             margin-bottom: 15px;
             font-weight: 500;
-            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
@@ -107,23 +108,35 @@
             color: #333;
             transform: scale(1.05);
         }
+
+        /* 影片區排版 */
+        .video-container {
+            width: 90%;
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+
+        .video-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-item p {
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
     </style>
 </head>
-<style>
-  /* 讓影片稍微有一點間距，看起來比較美 */
-  .video-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  video {
-    border-radius: 8px; /* 讓邊角圓圓的，比較有質感 */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點點陰影 */
-  }
-
 <body>
 
     <button class="theme-btn" onclick="toggleTheme()" id="btnText">切換至深色</button>
@@ -132,9 +145,45 @@
         <div class="avatar">✨</div>
         <h1>知媒體</h1>
         <p>我是老洪。<br>今天想聊點什麼?</p>
-        <img src="photo1.jpg" style="width:200px; border-radius:10px;">
-        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn">我的作品</a>
-        
+        <img src="photo1.jpg" style="width:100%; max-width:200px; border-radius:10px; margin-bottom: 20px;">
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">我的作品</a>
+    </div>
+
+    <div class="video-container">
+        <div class="video-item">
+            <p>洪可樂 1</p>
+            <video autoplay loop muted playsinline>
+                <source src="v1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-item">
+            <p>洪可樂 2</p>
+            <video autoplay loop muted playsinline>
+                <source src="v2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-item">
+            <p>嘟可樂 1</p>
+            <video autoplay loop muted playsinline>
+                <source src="v3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-item">
+            <p>嘟可樂 2</p>
+            <video autoplay loop muted playsinline>
+                <source src="v4.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-item">
+            <p>嘟可樂 3</p>
+            <video autoplay loop muted playsinline>
+                <source src="v5.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 
     <script>
@@ -150,59 +199,6 @@
             }
         }
     </script>
-<style>
-  /* 確保網頁可以正常上下捲動 */
-  html, body {
-    height: auto !important;
-    overflow-y: auto !important;
-  }
-
-  .video-gallery {
-    display: block; /* 讓影片一個接一個往下排 */
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-  }
-
-  .video-item {
-    margin-bottom: 30px; /* 影片之間的間距 */
-  }
-
-  video {
-    width: 100%; /* 自動適應寬度 */
-    height: auto; /* 高度隨比例縮放 */
-    border-radius: 10px;
-    display: block;
-  }
-
-<hr> <div style="width: 100%; max-width: 600px; margin: 0 auto;">
-  <p>洪可樂1.mp4</p>
-  <video width="100%" autoplay loop muted playsinline style="display: block; margin-bottom: 20px;">
-    <source src="v1.mp4" type="video/mp4">
-  </video>
-
-  <p>洪可樂2.mp4</p>
-  <video width="100%" autoplay loop muted playsinline style="display: block; margin-bottom: 20px;">
-    <source src="v2.mp4" type="video/mp4">
-  </video>
-
-  <p>嘟可樂1.mp4</p>
-  <video width="100%" autoplay loop muted playsinline style="display: block; margin-bottom: 20px;">
-    <source src="v3.mp4" type="video/mp4">
-  </video>
-
-  <p>嘟可樂2.mp4</p>
-  <video width="100%" autoplay loop muted playsinline style="display: block; margin-bottom: 20px;">
-    <source src="v4.mp4" type="video/mp4">
-  </video>
-
-  <p>嘟可樂3.mp4</p>
-  <video width="100%" autoplay loop muted playsinline style="display: block; margin-bottom: 20px;">
-    <source src="v5.mp4" type="video/mp4">
-  </video>
-</div>
-
-<hr>
 
 </body>
 </html>
