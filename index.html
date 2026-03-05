@@ -109,6 +109,35 @@
         }
     </style>
 </head>
+<style>
+  /* 讓影片稍微有一點間距，看起來比較美 */
+  .video-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  video {
+    border-radius: 8px; /* 讓邊角圓圓的，比較有質感 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 加一點點陰影 */
+  }
+</style>
+
+<div class="video-gallery">
+  <h3>作品展示 01</h3>
+  <video width="100%" autoplay loop muted playsinline>
+    <source src="v1.mp4" type="video/mp4">
+  </video>
+
+  <h3>作品展示 02</h3>
+  <video width="100%" autoplay loop muted playsinline>
+    <source src="v2.mp4" type="video/mp4">
+  </video>
+
+  </div>
+
 <body>
 
     <button class="theme-btn" onclick="toggleTheme()" id="btnText">切換至深色</button>
