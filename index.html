@@ -3,208 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>比熊嘟比的比奇堡 | Dobi's Cloud Castle</title>
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+    <title>Dobi's Life | 嘟比的生活紀錄</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 小仙女愛的潮流配色 */
-            --strawberry-cream: #FFDDE1; /* 草莓奶霜粉 (背景主色) */
-            --milktea: #D6C5B5;          /* 焦糖奶茶 (裝飾色) */
-            --berry-pink: #E8A8A8;        /* 乾燥莓果粉 (按鈕/Icon) */
-            --deep-coffee: #6A5445;       /* 深咖啡 (文字主色) */
-            --cloud-white: rgba(255, 255, 255, 0.9); /* 雲朵卡片白 */
-            --soft-shadow: 0 15px 40px rgba(106, 84, 69, 0.1); /* 療癒系軟陰影 */
+            --milktea-bg: #F5EFE6;      /* 暖奶茶底色 */
+            --milkpowder-pink: #FCE7E7; /* 溫柔奶粉色 */
+            --accent-pink: #E8A8A8;     /* 質感乾燥粉 */
+            --text-caramel: #5C4B40;    /* 深焦糖咖啡色 */
+            --card-white: rgba(255, 255, 255, 0.95);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background-color: var(--strawberry-cream);
-            /* 加入波浪背景分隔，更有層次 */
-            background-image: 
-                radial-gradient(at 10% 10%, rgba(214, 197, 181, 0.3) 0px, transparent 50%),
-                radial-gradient(at 90% 90%, rgba(255, 221, 225, 0.5) 0px, transparent 50%);
-            color: var(--deep-coffee);
-            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--milktea-bg);
+            background-image: linear-gradient(180deg, var(--milkpowder-pink) 0%, var(--milktea-bg) 40%);
+            color: var(--text-caramel);
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
             display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden; padding-bottom: 80px;
+            padding-bottom: 60px;
         }
 
-        /* 封面區塊：棉花糖仙境 */
+        /* 封面區：經典大圓形 */
         .hero {
             width: 100%; max-width: 500px;
-            padding: 100px 25px 40px;
+            padding: 80px 20px 40px;
             text-align: center;
-            position: relative;
         }
 
-        /* 🔥 🔥 核心修正：拒絕墓碑！棉花糖雲朵照片框 🔥 🔥 */
-        .photo-wrap {
-            width: 320px; height: 320px;
+        .avatar-circle {
+            width: 300px; height: 300px;
             margin: 0 auto 30px;
+            border-radius: 50%;
+            border: 8px solid #FFF;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
             overflow: hidden;
             background: #FFF;
-            /* 運用 clip-path 剪出像棉花糖/雲朵的不規則蓬鬆形狀 */
-            clip-path: polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border: 8px solid #FFF; /* 加上白邊更蓬鬆 */
-            display: flex; align-items: center; justify-content: center;
         }
 
-        .photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 🔥 🔥 核心修正：字體革命！快樂體與層次設計 🔥 🔥 */
+        /* 🔥 🔥 核心修正：穩定圓體、絕對等大 🔥 🔥 */
         .dobi-title {
-            font-family: 'ZCOOL KuaiLe', cursive; /* 復古塗鴉感、圓潤快樂體 */
-            font-size: 4rem;
-            color: #FFF; /* 文字白色 */
-            /* 運用多層陰影製造蓬鬆、立體的棉花糖感，拒絕死板 */
-            text-shadow: 2px 2px 0 var(--berry-pink),
-                         -2px -2px 0 var(--berry-pink),
-                         2px -2px 0 var(--berry-pink),
-                         -2px 2px 0 var(--berry-pink),
-                         4px 4px 10px rgba(232, 168, 168, 0.5),
-                         0 0 20px #FFF;
-            margin-bottom: 25px;
-            letter-spacing: 5px; /* 加寬字距，增加呼吸感 */
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-caramel);
+            letter-spacing: 12px; /* 增加字距讓視覺更平衡 */
+            margin-left: 12px;    /* 修正 letter-spacing 造成的偏心 */
+            margin-bottom: 20px;
+            /* 強制使用圓體風格系統字體 */
+            font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
         }
 
         .intro {
-            font-size: 1.05rem; line-height: 1.8;
-            padding: 0 10px; margin-bottom: 35px;
-            font-weight: 300;
-            color: var(--deep-coffee);
-            opacity: 0.85;
+            font-size: 1rem; line-height: 1.8;
+            padding: 0 15px; margin-bottom: 30px;
+            font-weight: 300; opacity: 0.8;
         }
 
-        @media (max-width: 480px) {
-            .hero { padding-top: 60px; }
-            .photo-wrap { width: 260px; height: 260px; border: 6px solid #FFF;}
-            .dobi-title { font-size: 3.2rem; }
-            .intro { font-size: 0.95rem; }
-        }
-
-        /* 影片作品區：雲朵卡片 */
-        .video-feed { width: 95%; max-width: 600px; }
+        /* 影片清單：清爽無邊框 */
+        .video-feed { width: 92%; max-width: 600px; }
 
         .video-card {
-            background: var(--cloud-white);
-            border-radius: 40px; /* 超圓潤角 */
-            padding: 18px;
+            background: var(--card-white);
+            border-radius: 30px;
+            padding: 15px;
             margin-bottom: 40px;
-            box-shadow: var(--soft-shadow);
+            box-shadow: 0 10px 30px rgba(92, 75, 64, 0.05);
             position: relative;
-            backdrop-filter: blur(5px);
-            border: 2px solid #FFF; /* 增加雲朵感 */
         }
 
-        .video-card p {
-            font-size: 1.1rem; margin-bottom: 12px;
-            font-weight: 500; color: var(--deep-coffee);
+        .video-info {
+            font-size: 1rem; font-weight: 500;
+            margin: 5px 0 15px 10px;
             display: flex; align-items: center;
-            font-family: 'ZCOOL KuaiLe', cursive; /* 標題也用快樂體 */
-            letter-spacing: 1px;
         }
 
-        .video-card p::before {
-            content: "☁️"; margin-right: 8px; /* 雲朵 Icon */
+        .video-info::before {
+            content: "♥"; margin-right: 10px; color: var(--accent-pink);
         }
 
-        video {
-            width: 100%; border-radius: 25px;
-            display: block; background: #000;
-        }
+        video { width: 100%; border-radius: 20px; display: block; background: #000; }
 
-        /* 🔥 🔥 核心修正：找回消失的聲音開關！極簡喇叭 Icon 🔥 🔥 */
-        .sound-toggle {
+        /* 聲音開關：極簡圓鈕 */
+        .mute-btn {
             position: absolute; bottom: 30px; right: 30px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             border: none; width: 44px; height: 44px;
             border-radius: 50%; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            font-size: 20px; z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 18px; z-index: 10;
         }
 
-        /* 裝飾飄浮圓圈 */
-        .decor {
-            position: absolute; border-radius: 50%;
-            background: var(--milktea); opacity: 0.2;
-            z-index: -1;
+        @media (max-width: 480px) {
+            .avatar-circle { width: 260px; height: 260px; }
+            .dobi-title { font-size: 3rem; letter-spacing: 8px; }
+            .intro { font-size: 0.95rem; }
         }
-        .decor1 { width: 100px; height: 100px; top: 10%; left: -5%; }
-        .decor2 { width: 150px; height: 150px; bottom: 10%; right: -10%; }
-
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="decor decor1"></div>
-        <div class="decor decor2"></div>
-
-        <div class="photo-wrap">
-            <img src="photo1.jpg" alt="Cloud-like Dobi">
+        <div class="avatar-circle">
+            <img src="photo1.jpg" alt="Dobi">
         </div>
         
         <h1 class="dobi-title">嘟比</h1>
         
         <p class="intro">
             捕捉每一份溫柔時刻。<br>
-            這裏紀錄了比熊小狗的調皮日常，<br>
-            願這份純粹與可愛，能治癒你的每一天。
+            這裏紀錄了雲朵小狗的調皮日常，<br>
+            願這份美好也能治癒你的心。
         </p>
     </section>
 
     <div class="video-feed">
         <div class="video-card">
-            <p>快樂吃貨模式啟動</p>
+            <p class="video-info">我想喝可樂的瞬間</p>
             <video id="v1" autoplay loop muted playsinline>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
-            <button class="sound-toggle" onclick="tS('v1', this)">🔇</button>
+            <button class="mute-btn" onclick="toggleMute('v1', this)">🔇</button>
         </div>
 
         <div class="video-card">
-            <p>🎾 球球大作戰</p>
+            <p class="video-info">可樂在哪裡</p>
             <video id="v2" autoplay loop muted playsinline>
                 <source src="洪可樂2.mp4" type="video/mp4">
             </video>
-            <button class="sound-toggle" onclick="tS('v2', this)">🔇</button>
+            <button class="mute-btn" onclick="toggleMute('v2', this)">🔇</button>
         </div>
 
         <div class="video-card">
-            <p>奔跑吧！棉花糖</p>
+            <p class="video-info">可樂向前衝</p>
             <video id="v3" autoplay loop muted playsinline>
                 <source src="嘟可樂1.mp4" type="video/mp4">
             </video>
-            <button class="sound-toggle" onclick="tS('v3', this)">🔇</button>
+            <button class="mute-btn" onclick="toggleMute('v3', this)">🔇</button>
         </div>
 
         <div class="video-card">
-            <p>💤 睡覺也要萌萌噠</p>
+            <p class="video-info">嘟比也愛可樂</p>
             <video id="v4" autoplay loop muted playsinline>
                 <source src="嘟可樂2.mp4" type="video/mp4">
             </video>
-            <button class="sound-toggle" onclick="tS('v4', this)">🔇</button>
+            <button class="mute-btn" onclick="toggleMute('v4', this)">🔇</button>
         </div>
 
         <div class="video-card">
-            <p>跟我一起愛可樂</p>
+            <p class="video-info">跟我一起奔跑吧</p>
             <video id="v5" autoplay loop muted playsinline>
                 <source src="嘟可樂3.mp4" type="video/mp4">
             </video>
-            <button class="sound-toggle" onclick="tS('v5', this)">🔇</button>
+            <button class="mute-btn" onclick="toggleMute('v5', this)">🔇</button>
         </div>
     </div>
 
     <script>
-        // 聲音開關控制函數
-        function tS(vidId, btn) {
-            const vid = document.getElementById(vidId);
-            vid.muted = !vid.muted;
-            // 切換喇叭 Icon
-            btn.innerHTML = vid.muted ? "🔇" : "🔊";
+        function toggleMute(id, btn) {
+            const v = document.getElementById(id);
+            v.muted = !v.muted;
+            btn.innerHTML = v.muted ? "🔇" : "🔊";
         }
     </script>
 </body>
