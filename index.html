@@ -2,197 +2,175 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dobi's Daily | 嘟比的生活紀錄</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobi | The Art of Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@300;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --milktea-bg: #F2E9E1;   
-            --milkpowder-pink: #F8D7D7; 
-            --accent-pink: #E8A8A8;  
-            --text-brown: #6A5445;   
-            --card-white: rgba(255, 255, 255, 0.9);
-            --soft-shadow: 0 10px 30px rgba(118, 99, 87, 0.1);
+            --nude-bg: #F8F5F2;    /* 高級裸色 */
+            --milk-tea: #D6C5B5;   /* 焦糖奶茶 */
+            --soft-pink: #FCEEEE;  /* 霧粉色 */
+            --deep-text: #4A443F;  /* 深咖啡 */
         }
 
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--milktea-bg);
-            background-image: radial-gradient(at 0% 0%, var(--milkpowder-pink) 0, transparent 40%),
-                              radial-gradient(at 100% 100%, var(--milkpowder-pink) 0, transparent 40%);
-            color: var(--text-brown);
-            font-family: 'Noto Sans TC', sans-serif;
-            display: flex; box-direction: column; flex-direction: column;
-            align-items: center; padding-bottom: 80px;
+            background-color: var(--nude-bg);
+            color: var(--deep-text);
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 0.05em;
+            display: flex; flex-direction: column; align-items: center;
         }
 
+        /* 封面區塊：極簡雜誌感 */
         .hero {
-            width: 100%; max-width: 500px;
-            padding: 80px 25px 30px;
+            width: 100%; max-width: 600px;
+            padding: 60px 20px;
             text-align: center;
+            animation: fadeIn 1.5s ease;
         }
 
-        .avatar-wrap {
-            width: 280px; height: 280px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            border: 10px solid #FFF;
-            box-shadow: var(--soft-shadow);
+        .photo-frame {
+            width: 85%; max-width: 320px;
+            aspect-ratio: 4/5; /* 雜誌人像比例 */
+            margin: 0 auto 40px;
+            border-radius: 100px 100px 20px 20px; /* 獨特的弧線設計 */
             overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+            background: #FFF;
         }
 
-        .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 🔥 核心修正：視覺補償設計 🔥 */
-        .dobi-title-wrap {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px; 
+        /* 頂級設計師的字體處理：不再糾結粗細，改用間距與韻律 */
+        .name-container {
+            position: relative;
+            display: inline-block;
             margin-bottom: 20px;
         }
 
-        .dobi-char {
-            font-family: "PingFang TC", "STHeiti", "Microsoft JhengHei", sans-serif;
-            font-size: 3.5rem;
-            line-height: 1;
-            display: inline-block;
-            color: var(--text-brown);
-        }
-
-        /* 「嘟」字筆畫多，稍微減輕粗細，避免看起來太黑 */
-        .char-du {
-            font-weight: 500;
-            transform: scale(0.96); /* 微微縮小一點點，平衡視覺膨脹 */
-        }
-
-        /* 「比」字筆畫少，特別加粗，避免看起來太細 */
-        .char-bi {
-            font-weight: 700;
-            transform: scale(1.02); /* 微微放大，增加存在感 */
-        }
-
-        .intro {
-            font-size: 1rem; line-height: 1.8;
-            padding: 0 15px; margin-bottom: 35px;
-            font-weight: 300;
+        .name-main {
+            font-family: 'Ma Shan Zheng', cursive; /* 充滿藝術感的手寫字 */
+            font-size: 4.5rem;
+            color: var(--deep-text);
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
-        @media (max-width: 480px) {
-            .avatar-wrap { width: 240px; height: 240px; }
-            .dobi-char { font-size: 3rem; }
+        .name-bg-blur {
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 6rem; color: var(--soft-pink);
+            z-index: 1; filter: blur(4px); opacity: 0.5;
+            white-space: nowrap;
         }
 
-        /* 影片清單區 */
-        .video-list { width: 95%; max-width: 600px; }
-
-        .video-card {
-            background: var(--card-white);
-            border-radius: 35px; padding: 15px;
-            margin-bottom: 40px; box-shadow: var(--soft-shadow);
-            position: relative; backdrop-filter: blur(8px);
+        .intro-text {
+            font-size: 0.95rem; line-height: 2;
+            color: var(--milk-tea); font-weight: 300;
+            margin-bottom: 40px;
+            padding: 0 40px;
         }
 
-        .video-title {
-            font-size: 1.05rem; margin: 10px 0 15px 10px;
-            font-weight: 500; display: flex; align-items: center;
+        /* 影片區域：去邊框化 */
+        .feed { width: 90%; max-width: 500px; }
+
+        .video-box {
+            background: #FFF;
+            border-radius: 24px;
+            padding: 12px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 40px rgba(214, 197, 181, 0.2);
+            position: relative;
         }
 
-        .video-title::before { content: "♡"; margin-right: 8px; color: var(--accent-pink); }
+        .video-box p {
+            font-size: 0.85rem; padding: 10px 0 15px 5px;
+            color: var(--milk-tea); letter-spacing: 0.2em;
+            text-align: left; text-transform: uppercase;
+        }
 
-        video { width: 100%; border-radius: 25px; display: block; background: #000; }
+        video { 
+            width: 100%; border-radius: 16px; 
+            display: block; 
+        }
 
-        .mute-toggle {
-            position: absolute; bottom: 30px; right: 30px;
-            background: rgba(255, 255, 255, 0.85);
-            border: none; width: 42px; height: 42px;
+        /* 極簡音量按鈕 */
+        .sound-btn {
+            position: absolute; bottom: 25px; right: 25px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(5px);
+            border: none; width: 36px; height: 36px;
             border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; z-index: 10;
+            color: var(--deep-text); font-size: 14px;
         }
 
-        .cta-btn {
-            display: inline-block;
-            background: var(--accent-pink); color: #FFF;
-            padding: 15px 50px; border-radius: 50px;
-            text-decoration: none; font-weight: 500;
-            box-shadow: 0 8px 20px rgba(232, 168, 168, 0.4);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 手機版適配 */
+        @media (max-width: 480px) {
+            .name-main { font-size: 3.5rem; }
+            .intro-text { padding: 0 20px; font-size: 0.85rem; }
+            .hero { padding-top: 40px; }
         }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="avatar-wrap">
-            <img src="photo1.jpg" alt="Dobi">
+        <div class="photo-frame">
+            <img src="photo1.jpg" alt="Dobi's Portrait">
         </div>
         
-        <div class="dobi-title-wrap">
-            <span class="dobi-char char-du">嘟</span>
-            <span class="dobi-char char-bi">比</span>
+        <div class="name-container">
+            <div class="name-bg-blur">Dobi</div>
+            <h1 class="name-main">嘟比</h1>
         </div>
 
-        <p class="intro">
-            捕捉每一份溫柔時刻。<br>
-            這裏紀錄了雲朵小狗的調皮日常，<br>
-            願這份美好也能治癒你的心。
+        <p class="intro-text">
+            Capturing the soft moments.<br>
+            在奶油色的時光裡，紀錄雲朵小狗的優雅與調皮。<br>
+            願這份純粹，能治癒你的日常。
         </p>
-        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="cta-btn" target="_blank">進入嘟比頻道</a>
     </section>
 
-    <div class="video-list">
-        <div class="video-card">
-            <p class="video-title">我想喝可樂的瞬間</p>
+    <div class="feed">
+        <div class="video-box">
+            <p>01 / Gentle Moment</p>
             <video id="v1" autoplay loop muted playsinline>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
-            <button class="mute-toggle" onclick="toggleMute('v1', this)">🔇</button>
+            <button class="sound-btn" onclick="tm('v1', this)">🔇</button>
         </div>
 
-        <div class="video-card">
-            <p class="video-title">可樂在哪裡</p>
+        <div class="video-box">
+            <p>02 / Playful Soul</p>
             <video id="v2" autoplay loop muted playsinline>
                 <source src="洪可樂2.mp4" type="video/mp4">
             </video>
-            <button class="mute-toggle" onclick="toggleMute('v2', this)">🔇</button>
+            <button class="sound-btn" onclick="tm('v2', this)">🔇</button>
         </div>
 
-        <div class="video-card">
-            <p class="video-title">可樂向前衝</p>
+        <div class="video-box">
+            <p>03 / Dreamy Run</p>
             <video id="v3" autoplay loop muted playsinline>
                 <source src="嘟可樂1.mp4" type="video/mp4">
             </video>
-            <button class="mute-toggle" onclick="toggleMute('v3', this)">🔇</button>
+            <button class="sound-btn" onclick="tm('v3', this)">🔇</button>
         </div>
 
-        <div class="video-card">
-            <p class="video-title">嘟比也愛可樂</p>
+        <div class="video-box">
+            <p>04 / Sweet Dobi</p>
             <video id="v4" autoplay loop muted playsinline>
                 <source src="嘟可樂2.mp4" type="video/mp4">
             </video>
-            <button class="mute-toggle" onclick="toggleMute('v4', this)">🔇</button>
+            <button class="sound-btn" onclick="tm('v4', this)">🔇</button>
         </div>
 
-        <div class="video-card">
-            <p class="video-title">跟我一起奔跑吧</p>
-            <video id="v5" autoplay loop muted playsinline>
-                <source src="嘟可樂3.mp4" type="video/mp4">
-            </video>
-            <button class="mute-toggle" onclick="toggleMute('v5', this)">🔇</button>
-        </div>
-    </div>
-
-    <script>
-        function toggleMute(videoId, btn) {
-            const video = document.getElementById(videoId);
-            video.muted = !video.muted;
-            btn.innerHTML = video.muted ? "🔇" : "🔊";
-        }
-    </script>
-</body>
-</html>
+        <div class="video-box">
+            <p>05
