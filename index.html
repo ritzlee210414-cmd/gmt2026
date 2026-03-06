@@ -3,81 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>比熊嘟比的比奇                                                          堡 - 嘟比的生活紀錄</title>
+    <title>Dobi's Daily - 比熊嘟比的生活紀錄</title>
     <style>
         :root {
-            --bg-color: #FFDE59; /* 活潑黃 */
-            --accent-color: #FF914D; /* 活力橘 */
+            /* 韓系奶油少女風格色調 */
+            --bg-color: #F9F7F2;      /* 奶油米色 */
+            --accent-color: #E8A8A8;  /* 霧感乾燥粉 */
             --card-bg: #FFFFFF;
-            --text-color: #545454;
-            --secondary-color: #5CE1E6; /* 清新藍 */
+            --text-color: #5D544D;    /* 暖咖啡色字體 */
+            --secondary-color: #B8C7B0; /* 鼠尾草綠 */
+            --shadow: 0 20px 40px rgba(93, 84, 77, 0.08);
         }
 
         [data-theme="dark"] {
-            --bg-color: #2C3E50;
-            --accent-color: #FFBD59;
-            --card-bg: #34495E;
-            --text-color: #ECF0F1;
-            --secondary-color: #3498DB;
+            --bg-color: #2D2A26;
+            --accent-color: #D4A373;
+            --card-bg: #3D3935;
+            --text-color: #EDE7E1;
+            --secondary-color: #8A9A84;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s ease;
         }
 
         body {
             min-height: 100vh;
             background-color: var(--bg-color);
-            background-image: radial-gradient(var(--accent-color) 1px, transparent 1px);
-            background-size: 30px 30px; /* 俏皮點點背景 */
-            font-family: 'Comic Sans MS', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            /* 移除幼稚的點點，改用純淨的背景 */
+            font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 0;
+            padding: 80px 0;
         }
 
-        /* 切換主題按鈕 */
+        /* 主題切換按鈕 - 改為更精緻的膠囊形 */
         .theme-btn {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
             background: var(--card-bg);
-            border: 3px solid var(--accent-color);
-            padding: 8px 15px;
-            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
             cursor: pointer;
             z-index: 1000;
-            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 1px;
             color: var(--text-color);
+            box-shadow: var(--shadow);
         }
 
-        /* 封面卡片 */
+        /* 封面卡片 - 提升質感 */
         .profile-card {
             background: var(--card-bg);
-            border: 5px solid var(--accent-color);
-            border-radius: 40px;
-            padding: 30px;
+            border-radius: 60px;
+            padding: 60px 40px;
             text-align: center;
             width: 90%;
-            max-width: 450px;
-            box-shadow: 10px 10px 0px var(--text-color); /* 復古插畫感陰影 */
-            margin-bottom: 50px;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            margin-bottom: 80px;
             position: relative;
         }
 
+        /* 1. 照片比例放大一倍 (原本180px -> 320px) */
         .avatar-container {
-            width: 180px;
-            height: 180px;
-            margin: -80px auto 20px; /* 讓頭像往上飄一點 */
-            border: 8px solid white;
+            width: 320px; 
+            height: 320px;
+            margin: -180px auto 30px; /* 向上偏移量也隨之調整 */
+            border: 12px solid var(--card-bg);
             border-radius: 50%;
             overflow: hidden;
-            background: #eee;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #fff;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
         }
 
         .avatar-container img {
@@ -87,136 +91,143 @@
         }
 
         h1 {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 0px #fff;
+            font-size: 2.2rem;
+            color: var(--text-color);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            font-weight: 500;
         }
 
         .badge {
             background: var(--secondary-color);
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            opacity: 0.9;
         }
 
         .intro {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
             color: var(--text-color);
+            opacity: 0.8;
         }
 
+        /* 按鈕改為優雅的漸層或純色 */
         .btn {
             display: inline-block;
             background: var(--accent-color);
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 16px 45px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border: 3px solid var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(232, 168, 168, 0.3);
         }
 
         .btn:hover {
-            transform: rotate(-3deg) scale(1.1);
-            background: #FF5733;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(232, 168, 168, 0.4);
         }
 
-        /* 影片區 */
+        /* 影片作品區 - 改為更乾淨的卡片 */
         .video-grid {
             width: 90%;
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .video-card {
-            background: white;
-            border-radius: 30px;
-            padding: 15px;
-            margin-bottom: 35px;
-            border: 3px solid var(--text-color);
-            box-shadow: 8px 8px 0px var(--secondary-color);
+            background: var(--card-bg);
+            border-radius: 40px;
+            padding: 25px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow);
         }
 
         .video-card p {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 10px 0;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 5px 0 15px 10px;
             color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .video-card p::before {
+            content: "♡";
+            margin-right: 10px;
+            color: var(--accent-color);
         }
 
         video {
             width: 100%;
-            border-radius: 20px;
-            background: #000;
+            border-radius: 25px;
+            background: #fdfdfd;
         }
 
-        /* 裝飾小圖案 */
-        .paw-print {
-            position: absolute;
-            font-size: 30px;
-            opacity: 0.2;
-        }
+        /* 移除幼稚元素，增加優雅的過渡 */
     </style>
 </head>
 <body>
 
-    <button class="theme-btn" onclick="toggleTheme()" id="btnText">🌙 切換風格</button>
+    <button class="theme-btn" onclick="toggleTheme()" id="btnText">Mode: Light</button>
 
     <div class="profile-card">
         <div class="avatar-container">
             <img src="photo1.jpg" alt="比熊嘟比 Dobi">
         </div>
-        <div class="badge">☁️ 雲朵系男孩</div>
-        <h1>我是嘟比！</h1>
+        <div class="badge">Dobi the Bichon</div>
+        <h1>Dobi 嘟比</h1>
         <p class="intro">
-            歡迎來到我的冒險頻道！🐾<br>
-            我是一隻活力滿滿的吃貨<br>
-            喜歡有人陪也愛散步和跑跑的小比熊。
+            捕捉每一刻與雲朵小狗的溫暖瞬間。<br>
+            喜歡在陽光下打盹，更喜歡有你的陪伴。<br>
+            這裡紀錄了嘟比純粹又調皮的生活花絮。
         </p>
-        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">看更多我的影音 🎬</a>
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">View Channel</a>
     </div>
 
     <div class="video-grid">
         <div class="video-card">
-            <p>🐾 我想喝可樂 No.1</p>
+            <p>日常的可愛瞬間 No.1</p>
             <video autoplay loop muted playsinline controls>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-card">
-            <p>🎾 可樂在哪裡？ No.2</p>
+            <p>可樂果時間？ No.2</p>
             <video autoplay loop muted playsinline controls>
                 <source src="洪可樂2.mp4" type="video/mp4">
             </video>
         </div>
 
         <div class="video-card">
-            <p>💤 可樂向前衝 No.3</p>
+            <p>與微風賽跑 No.3</p>
             <video autoplay loop muted playsinline controls>
                 <source src="嘟可樂1.mp4" type="video/mp4">
-             </video>
+            </video>
         </div>
 
         <div class="video-card">
-            <p>💤 嘟比也愛可樂 No.4/p>
+            <p>慵懶的小時光 No.4</p>
             <video autoplay loop muted playsinline controls>
                 <source src="嘟可樂2.mp4" type="video/mp4">
-             </video>
+            </video>
         </div>
 
         <div class="video-card">
-            <p>💤 和我一起奔跑吧 No.5/p>
+            <p>奔向你的懷抱 No.5</p>
             <video autoplay loop muted playsinline controls>
                 <source src="嘟可樂3.mp4" type="video/mp4">
             </video>
         </div>
-
     </div>
 
     <script>
@@ -225,10 +236,10 @@
             const btn = document.getElementById('btnText');
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
-                btn.innerHTML = '🌙 切換深色';
+                btn.innerHTML = 'Mode: Light';
             } else {
                 body.setAttribute('data-theme', 'dark');
-                btn.innerHTML = '☀️ 切換淺色';
+                btn.innerHTML = 'Mode: Dark';
             }
         }
     </script>
