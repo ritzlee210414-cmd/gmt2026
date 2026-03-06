@@ -3,223 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>知媒體 - 嘟比的作品集</title>
+    <title>比熊嘟比的比奇堡 - 嘟比的生活紀錄</title>
     <style>
         :root {
-            /* 柔和的莫蘭迪綠與灰藍漸層，營造純淨感 */
-            --bg-color: linear-gradient(-45deg, #A3B18A, #DDA15E, #5D8AA8, #8FB996);
-            --card-bg: rgba(255, 255, 255, 0.7); 
-            --text-color: #2D3E4E;
-            --accent-color: #4A7C59;
-            --glass-border: rgba(255, 255, 255, 0.5);
+            --bg-color: #FFDE59; /* 活潑黃 */
+            --accent-color: #FF914D; /* 活力橘 */
+            --card-bg: #FFFFFF;
+            --text-color: #545454;
+            --secondary-color: #5CE1E6; /* 清新藍 */
         }
 
         [data-theme="dark"] {
-            --bg-color: linear-gradient(-45deg, #283618, #606C38, #2D3E4E, #1A1A1A);
-            --card-bg: rgba(0, 0, 0, 0.6);
-            --text-color: #F0F0F0;
-            --accent-color: #8FB996;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-color: #2C3E50;
+            --accent-color: #FFBD59;
+            --card-bg: #34495E;
+            --text-color: #ECF0F1;
+            --secondary-color: #3498DB;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.5s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         body {
             min-height: 100vh;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--accent-color) 1px, transparent 1px);
+            background-size: 30px 30px; /* 俏皮點點背景 */
+            font-family: 'Comic Sans MS', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: var(--bg-color);
-            background-size: 400% 400%;
-            animation: gradientMove 12s ease infinite;
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            overflow-y: auto;
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* 主題切換按鈕 */
+        /* 切換主題按鈕 */
         .theme-btn {
             position: fixed;
-            top: 25px;
-            right: 25px;
+            top: 20px;
+            right: 20px;
             background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-color);
-            padding: 8px 20px;
-            border-radius: 30px;
+            border: 3px solid var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
             cursor: pointer;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             z-index: 1000;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* 個人簡介卡片 */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 50px 30px;
-            text-align: center;
+            font-weight: bold;
             color: var(--text-color);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-            width: 90%;
-            max-width: 420px;
-            margin-bottom: 60px;
         }
 
-        .avatar {
-            width: 90px;
-            height: 90px;
-            background: #fff;
+        /* 封面卡片 */
+        .profile-card {
+            background: var(--card-bg);
+            border: 5px solid var(--accent-color);
+            border-radius: 40px;
+            padding: 30px;
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 10px 10px 0px var(--text-color); /* 復古插畫感陰影 */
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .avatar-container {
+            width: 180px;
+            height: 180px;
+            margin: -80px auto 20px; /* 讓頭像往上飄一點 */
+            border: 8px solid white;
             border-radius: 50%;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            background: #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         h1 {
-            font-weight: 600;
-            letter-spacing: 3px;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        .badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
             margin-bottom: 15px;
-            font-size: 28px;
         }
 
-        .intro-text {
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            opacity: 0.9;
+        .intro {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: var(--text-color);
         }
 
-        /* 行動按鈕 */
         .btn {
             display: inline-block;
-            text-decoration: none;
-            color: #fff;
             background: var(--accent-color);
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 20px rgba(74, 124, 89, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 3px solid var(--text-color);
         }
 
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(74, 124, 89, 0.4);
+            transform: rotate(-3deg) scale(1.1);
+            background: #FF5733;
         }
 
-        /* 影片作品區 */
-        .video-container {
+        /* 影片區 */
+        .video-grid {
             width: 90%;
-            max-width: 700px;
+            max-width: 600px;
         }
 
-        .video-item {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
+        .video-card {
+            background: white;
             border-radius: 30px;
-            padding: 25px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 35px;
+            border: 3px solid var(--text-color);
+            box-shadow: 8px 8px 0px var(--secondary-color);
         }
 
-        .video-item p {
-            margin-bottom: 15px;
-            font-weight: 600;
+        .video-card p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 10px 0;
             color: var(--text-color);
-            letter-spacing: 1px;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-        }
-
-        .video-item p::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            margin-right: 10px;
         }
 
         video {
             width: 100%;
             border-radius: 20px;
-            display: block;
             background: #000;
-            outline: none;
+        }
+
+        /* 裝飾小圖案 */
+        .paw-print {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.2;
         }
     </style>
 </head>
 <body>
 
-    <button class="theme-btn" onclick="toggleTheme()" id="btnText">切換至深色</button>
+    <button class="theme-btn" onclick="toggleTheme()" id="btnText">🌙 切換風格</button>
 
-    <div class="glass-card">
-        <div class="avatar">✨</div>
-        <h1>知媒體</h1>
-        <div class="intro-text">
-            你好，我是 <strong>嘟比</strong>。<br>
-            專注於捕捉生活的純淨與美感。<br>
-            歡迎瀏覽我的保養品影像作品。
+    <div class="profile-card">
+        <div class="avatar-container">
+            <img src="photo1.jpg" alt="比熊嘟比 Dobi">
         </div>
-        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">造訪頻道</a>
+        <div class="badge">☁️ 雲朵系男孩</div>
+        <h1>我是嘟比！</h1>
+        <p class="intro">
+            歡迎來到我的冒險頻道！🐾<br>
+            我是一隻喜歡吃可樂果（？）、愛散步、<br>
+            更愛在泥土裡打滾的比熊犬。
+        </p>
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="btn" target="_blank">看更多我的影音 🎬</a>
     </div>
 
-    <div class="video-container">
-        <div class="video-item">
-            <p>純粹之美 No.1</p>
+    <div class="video-grid">
+        <div class="video-card">
+            <p>🐾 嘟比冒險記 No.1</p>
             <video autoplay loop muted playsinline controls>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
         </div>
 
-        <div class="video-item">
-            <p>光澤儀式 No.2</p>
+        <div class="video-card">
+            <p>🎾 球球在哪裡？ No.2</p>
             <video autoplay loop muted playsinline controls>
                 <source src="洪可樂2.mp4" type="video/mp4">
             </video>
         </div>
 
-        <div class="video-item">
-            <p>水潤肌密 No.3</p>
+        <div class="video-card">
+            <p>💤 睡覺也要萌萌噠 No.3</p>
             <video autoplay loop muted playsinline controls>
                 <source src="嘟可樂1.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="video-item">
-            <p>逆時呵護 No.4</p>
-            <video autoplay loop muted playsinline controls>
-                <source src="嘟可樂2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="video-item">
-            <p>植物力量 No.5</p>
-            <video autoplay loop muted playsinline controls>
-                <source src="嘟可樂3.mp4" type="video/mp4">
             </video>
         </div>
     </div>
@@ -230,13 +210,12 @@
             const btn = document.getElementById('btnText');
             if (body.getAttribute('data-theme') === 'dark') {
                 body.removeAttribute('data-theme');
-                btn.innerHTML = '切換至深色';
+                btn.innerHTML = '🌙 切換深色';
             } else {
                 body.setAttribute('data-theme', 'dark');
-                btn.innerHTML = '切換至淺色';
+                btn.innerHTML = '☀️ 切換淺色';
             }
         }
     </script>
-
 </body>
 </html>
