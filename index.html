@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dobi's Daily | 嘟比的生活紀錄</title>
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* 仙女系：奶茶色與奶粉色佔比加重 */
+            /* 仙女系：奶茶色與奶粉色佔比 */
             --milktea-bg: #F2E9E1;   /* 經典奶茶底色 */
             --milkpowder-pink: #F8D7D7; /* 溫柔奶粉色 */
             --accent-pink: #E8A8A8;  /* 點綴乾燥粉 */
@@ -53,18 +53,17 @@
 
         .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 嘟比字體設計：雲朵胖胖質感 */
+        /* 🔥 調整後的嘟比字體設計 🔥 */
         .dobi-title {
-            font-family: 'ZCOOL KuaiLe', cursive;
-            font-size: 3.5rem;
-            color: white;
-            /* 運用多層陰影製造立體可愛感 */
-            text-shadow: 2px 2px 0 var(--accent-pink),
-                         -2px -2px 0 var(--accent-pink),
-                         2px -2px 0 var(--accent-pink),
-                         -2px 2px 0 var(--accent-pink),
-                         4px 4px 10px rgba(232, 168, 168, 0.5);
-            margin-bottom: 20px;
+            font-family: 'Kosugi Maru', cursive; /* 改用圓潤且清晰的 Kosugi Maru */
+            font-size: 3.2rem; /* 稍微調小一点確保在手機上的穩定度 */
+            color: var(--text-brown); /* 直接使用主色文字，增加高級感 */
+            letter-spacing: 4px; /* 加寬字距，增加呼吸感 */
+            /* 捨棄生硬描邊，改用極柔和的發光特效 */
+            text-shadow: 0 4px 10px rgba(255, 255, 255, 0.6),
+                         0 0 15px rgba(232, 168, 168, 0.4); 
+            margin-bottom: 25px;
+            font-weight: 400; /* Kosugi Maru 通常只有一個 weight，設定 400 即可 */
         }
 
         .intro {
@@ -77,13 +76,13 @@
 
         @media (max-width: 480px) {
             .hero { padding-top: 60px; }
-            .avatar-wrap { width: 240px; height: 240px; }
-            .dobi-title { font-size: 3rem; }
-            .intro { font-size: 0.95rem; }
+            .avatar-wrap { width: 220px; height: 220px; }
+            .dobi-title { font-size: 2.8rem; letter-spacing: 2px;} /* 手機版字距微調 */
+            .intro { font-size: 0.95rem; padding: 0 5px; }
         }
 
         /* 影片作品清單 */
-        .video-list { width: 95%; max-width: 600px; }
+        .video-list { width: 95%; max-width: 650px; }
 
         .video-card {
             background: var(--card-white);
@@ -102,12 +101,12 @@
         }
 
         .video-title::before {
-            content: "✨"; margin-right: 8px;
+            content: "♡"; margin-right: 8px; color: var(--accent-pink);
         }
 
         video {
             width: 100%; border-radius: 20px;
-            display: block; background: #000;
+            display: block; background: #fdfdfd;
         }
 
         /* 靜音切換按鈕 */
@@ -150,7 +149,7 @@
 
     <div class="video-list">
         <div class="video-card">
-            <p class="video-title">想喝可樂的瞬間</p>
+            <p class="video-title">我想喝可樂的瞬間</p>
             <video id="v1" autoplay loop muted playsinline>
                 <source src="洪可樂1.mp4" type="video/mp4">
             </video>
