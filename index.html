@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dobi's Daily | 嘟比的生活紀錄</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --milktea-bg: #F2E9E1;   
             --milkpowder-pink: #F8D7D7; 
             --accent-pink: #E8A8A8;  
-            --text-brown: #6A5445;   /* 加深一點焦糖棕，更清晰 */
+            --text-brown: #6A5445;   
             --card-white: rgba(255, 255, 255, 0.9);
             --soft-shadow: 0 10px 30px rgba(118, 99, 87, 0.1);
         }
@@ -26,10 +26,8 @@
                               radial-gradient(at 100% 100%, var(--milkpowder-pink) 0, transparent 40%);
             color: var(--text-brown);
             font-family: 'Noto Sans TC', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 80px;
+            display: flex; box-direction: column; flex-direction: column;
+            align-items: center; padding-bottom: 80px;
         }
 
         .hero {
@@ -45,28 +43,37 @@
             border: 10px solid #FFF;
             box-shadow: var(--soft-shadow);
             overflow: hidden;
-            background: #EEE;
         }
 
         .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 🔥 核心修正：確保嘟比二字絕對等大且平衡 🔥 */
+        /* 🔥 核心修正：視覺補償設計 🔥 */
         .dobi-title-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* 精準控制字距 */
+            gap: 8px; 
             margin-bottom: 20px;
         }
 
         .dobi-char {
+            font-family: "PingFang TC", "STHeiti", "Microsoft JhengHei", sans-serif;
             font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--text-brown);
-            /* 使用圓體風格的系統字體優先，確保平衡 */
-            font-family: "Hiragino Maru Gothic ProN", "Quicksand", "Meiryo", "Microsoft JhengHei", sans-serif;
             line-height: 1;
-            text-shadow: 2px 2px 0px #FFF, 4px 4px 15px rgba(232, 168, 168, 0.4);
+            display: inline-block;
+            color: var(--text-brown);
+        }
+
+        /* 「嘟」字筆畫多，稍微減輕粗細，避免看起來太黑 */
+        .char-du {
+            font-weight: 500;
+            transform: scale(0.96); /* 微微縮小一點點，平衡視覺膨脹 */
+        }
+
+        /* 「比」字筆畫少，特別加粗，避免看起來太細 */
+        .char-bi {
+            font-weight: 700;
+            transform: scale(1.02); /* 微微放大，增加存在感 */
         }
 
         .intro {
@@ -77,23 +84,18 @@
         }
 
         @media (max-width: 480px) {
-            .hero { padding-top: 50px; }
             .avatar-wrap { width: 240px; height: 240px; }
             .dobi-char { font-size: 3rem; }
-            .intro { font-size: 0.95rem; }
         }
 
-        /* 影片清單 */
+        /* 影片清單區 */
         .video-list { width: 95%; max-width: 600px; }
 
         .video-card {
             background: var(--card-white);
-            border-radius: 35px;
-            padding: 15px;
-            margin-bottom: 40px;
-            box-shadow: var(--soft-shadow);
-            position: relative;
-            backdrop-filter: blur(8px);
+            border-radius: 35px; padding: 15px;
+            margin-bottom: 40px; box-shadow: var(--soft-shadow);
+            position: relative; backdrop-filter: blur(8px);
         }
 
         .video-title {
@@ -101,15 +103,9 @@
             font-weight: 500; display: flex; align-items: center;
         }
 
-        .video-title::before {
-            content: "♡"; margin-right: 8px; color: var(--accent-pink);
-            font-weight: bold;
-        }
+        .video-title::before { content: "♡"; margin-right: 8px; color: var(--accent-pink); }
 
-        video {
-            width: 100%; border-radius: 25px;
-            display: block; background: #000;
-        }
+        video { width: 100%; border-radius: 25px; display: block; background: #000; }
 
         .mute-toggle {
             position: absolute; bottom: 30px; right: 30px;
@@ -118,7 +114,6 @@
             border-radius: 50%; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             font-size: 18px; z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .cta-btn {
@@ -138,8 +133,8 @@
         </div>
         
         <div class="dobi-title-wrap">
-            <span class="dobi-char">嘟</span>
-            <span class="dobi-char">比</span>
+            <span class="dobi-char char-du">嘟</span>
+            <span class="dobi-char char-bi">比</span>
         </div>
 
         <p class="intro">
