@@ -20,11 +20,12 @@
             background-color: var(--milktea-bg);
             background-image: linear-gradient(180deg, var(--milkpowder-pink) 0%, var(--milktea-bg) 40%);
             color: var(--text-caramel);
-            font-family: 'Noto Sans TC', sans-serif;
+            font-family: 'Noto Sans TC', -apple-system, sans-serif;
             display: flex; flex-direction: column; align-items: center;
             padding-bottom: 60px;
         }
 
+        /* 封面區：經典大圓形 */
         .hero {
             width: 100%; max-width: 500px;
             padding: 80px 20px 40px;
@@ -43,6 +44,7 @@
 
         .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* 穩定圓體 */
         .dobi-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -50,63 +52,69 @@
             letter-spacing: 12px; 
             margin-left: 12px;    
             margin-bottom: 20px;
-            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
         }
 
         .intro {
             font-size: 1rem; line-height: 1.8;
-            padding: 0 15px; margin-bottom: 35px;
+            padding: 0 15px; margin-bottom: 30px; /* 留出空間給按鈕 */
             font-weight: 300; opacity: 0.9;
         }
 
-        /* 影片容器：防止點擊跳轉的核心 */
+        /* 🔥 🔥 重點：YouTube 按鈕（這顆一定要在！） 🔥 🔥 */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-pink);
+            color: #FFF;
+            padding: 15px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(232, 168, 168, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .cta-button:active { transform: scale(0.95); }
+
+        /* 影片 Feed 區 */
         .video-feed { width: 92%; max-width: 600px; }
 
         .video-card {
             background: var(--card-white);
-            border-radius: 35px;
-            padding: 20px;
+            border-radius: 30px;
+            padding: 15px;
             margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(92, 75, 64, 0.08);
+            box-shadow: 0 10px 30px rgba(92, 75, 64, 0.05);
             position: relative;
-            overflow: hidden;
         }
 
-        .yt-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 177.77%; /* 9:16 Shorts 比例 */
-            height: 0;
-            border-radius: 20px;
-            overflow: hidden;
+        .video-info {
+            font-size: 1rem; font-weight: 500;
+            margin: 5px 0 15px 10px;
+            display: flex; align-items: center;
         }
 
-        .yt-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
+        .video-info::before {
+            content: "♥"; margin-right: 10px; color: var(--accent-pink);
         }
 
-        /* 🔥 防跳轉遮罩：擋住頂部標題與連結 🔥 */
-        .yt-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 15%; /* 遮住上方 15% 的連結區 */
-            z-index: 10;
-            background: transparent;
-        }
-        
-        /* 🔥 防跳轉遮罩：擋住右下角 YouTube Logo 🔥 */
-        .yt-logo-blocker {
-            position: absolute;
-            bottom: 0; right: 0; width: 25%; height: 10%;
-            z-index: 10;
-            background: transparent;
+        video { width: 100%; border-radius: 20px; display: block; background: #000; }
+
+        .mute-btn {
+            position: absolute; bottom: 30px; right: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none; width: 44px; height: 44px;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; z-index: 10;
         }
 
         @media (max-width: 480px) {
             .avatar-circle { width: 260px; height: 260px; }
             .dobi-title { font-size: 3rem; letter-spacing: 8px; }
+            .intro { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -124,25 +132,58 @@
             這裡是嘟比的搗蛋日記，也是最柔軟的日常。<br>
             願這份純粹的可愛，能輕輕地治癒你的每個瞬間。
         </p>
+
+        <a href="https://youtube.com/shorts/p841UmI6ii8" class="cta-button" target="_blank">點我看更多作品 ✨</a>
     </section>
 
     <div class="video-feed">
         <div class="video-card">
-            <p style="text-align:center; margin-bottom:15px; font-weight:500;">♥ 嘟比的快樂碎片</p>
-            <div class="yt-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/p841UmI6ii8?modestbranding=1&rel=0&iv_load_policy=3&showinfo=0" 
-                    title="YouTube video player" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-                
-                <div class="yt-overlay"></div>
-                <div class="yt-logo-blocker"></div>
-            </div>
+            <p class="video-info">好想喝可樂</p>
+            <video id="v1" autoplay loop muted playsinline>
+                <source src="洪可樂1.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('v1', this)">🔇</button>
         </div>
 
+        <div class="video-card">
+            <p class="video-info">可樂在哪裡</p>
+            <video id="v2" autoplay loop muted playsinline>
+                <source src="洪可樂2.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('v2', this)">🔇</button>
         </div>
 
+        <div class="video-card">
+            <p class="video-info">可樂向前衝</p>
+            <video id="v3" autoplay loop muted playsinline>
+                <source src="嘟可樂1.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('v3', this)">🔇</button>
+        </div>
+
+        <div class="video-card">
+            <p class="video-info">嘟比愛可樂</p>
+            <video id="v4" autoplay loop muted playsinline>
+                <source src="嘟可樂2.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('v4', this)">🔇</button>
+        </div>
+
+        <div class="video-card">
+            <p class="video-info">跟嘟一起奔跑</p>
+            <video id="v5" autoplay loop muted playsinline>
+                <source src="嘟可樂3.mp4" type="video/mp4">
+            </video>
+            <button class="mute-btn" onclick="toggleMute('v5', this)">🔇</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMute(id, btn) {
+            const v = document.getElementById(id);
+            v.muted = !v.muted;
+            btn.innerHTML = v.muted ? "🔇" : "🔊";
+        }
+    </script>
 </body>
 </html>
