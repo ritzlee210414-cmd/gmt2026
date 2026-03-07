@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --milktea-bg: #F5EFE6;      /* 暖奶茶底色 */
-            --milkpowder-pink: #FCE7E7; /* 溫柔奶粉色 */
-            --accent-pink: #E8A8A8;     /* 質感乾燥粉 */
-            --text-caramel: #5C4B40;    /* 深焦糖咖啡色 */
+            --milktea-bg: #F5EFE6;      
+            --milkpowder-pink: #FCE7E7; 
+            --accent-pink: #E8A8A8;     
+            --text-caramel: #5C4B40;    
             --card-white: rgba(255, 255, 255, 0.95);
         }
 
@@ -20,12 +20,11 @@
             background-color: var(--milktea-bg);
             background-image: linear-gradient(180deg, var(--milkpowder-pink) 0%, var(--milktea-bg) 40%);
             color: var(--text-caramel);
-            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
             display: flex; flex-direction: column; align-items: center;
             padding-bottom: 60px;
         }
 
-        /* 封面區：恢復經典大圓形 */
         .hero {
             width: 100%; max-width: 500px;
             padding: 80px 20px 40px;
@@ -44,7 +43,6 @@
 
         .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 核心修正：穩定圓體、絕對等大、呼吸字距 */
         .dobi-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -52,7 +50,7 @@
             letter-spacing: 12px; 
             margin-left: 12px;    
             margin-bottom: 20px;
-            font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
         }
 
         .intro {
@@ -61,54 +59,90 @@
             font-weight: 300; opacity: 0.9;
         }
 
-        /* YouTube 作品連通按鍵 */
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-pink);
-            color: #FFF;
-            padding: 15px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            box-shadow: 0 10px 25px rgba(232, 168, 168, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:active { transform: scale(0.95); }
-
-        /* 影片 Feed 區 */
-        .video-feed { width: 92%; max-width: 600px; margin-top: 20px; }
+        /* 影片容器：防止點擊跳轉的核心 */
+        .video-feed { width: 92%; max-width: 600px; }
 
         .video-card {
             background: var(--card-white);
-            border-radius: 30px;
-            padding: 15px;
+            border-radius: 35px;
+            padding: 20px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(92, 75, 64, 0.05);
+            box-shadow: 0 15px 35px rgba(92, 75, 64, 0.08);
             position: relative;
+            overflow: hidden;
         }
 
-        .video-info {
-            font-size: 1rem; font-weight: 500;
-            margin: 5px 0 15px 10px;
-            display: flex; align-items: center;
+        .yt-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 177.77%; /* 9:16 Shorts 比例 */
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
         }
 
-        .video-info::before {
-            content: "♥"; margin-right: 10px; color: var(--accent-pink);
+        .yt-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
         }
 
-        video { width: 100%; border-radius: 20px; display: block; background: #000; }
-
-        /* 聲音開關 ICON */
-        .mute-btn {
-            position: absolute; bottom: 30px; right: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            border: none; width: 44px; height: 44px;
-            border-radius: 50%; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 18px; z-index: 10;
+        /* 🔥 防跳轉遮罩：擋住頂部標題與連結 🔥 */
+        .yt-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 15%; /* 遮住上方 15% 的連結區 */
+            z-index: 10;
+            background: transparent;
+        }
+        
+        /* 🔥 防跳轉遮罩：擋住右下角 YouTube Logo 🔥 */
+        .yt-logo-blocker {
+            position: absolute;
+            bottom: 0; right: 0; width: 25%; height: 10%;
+            z-index: 10;
+            background: transparent;
         }
 
         @media (max-width: 480px) {
-            .avatar-circle { width
+            .avatar-circle { width: 260px; height: 260px; }
+            .dobi-title { font-size: 3rem; letter-spacing: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="avatar-circle">
+            <img src="photo1.jpg" alt="Dobi">
+        </div>
+        
+        <h1 class="dobi-title">嘟比</h1>
+        
+        <p class="intro">
+            收藏雲朵裡的每一寸陽光。<br>
+            這裡是嘟比的搗蛋日記，也是最柔軟的日常。<br>
+            願這份純粹的可愛，能輕輕地治癒你的每個瞬間。
+        </p>
+    </section>
+
+    <div class="video-feed">
+        <div class="video-card">
+            <p style="text-align:center; margin-bottom:15px; font-weight:500;">♥ 嘟比的快樂碎片</p>
+            <div class="yt-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/p841UmI6ii8?modestbranding=1&rel=0&iv_load_policy=3&showinfo=0" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                
+                <div class="yt-overlay"></div>
+                <div class="yt-logo-blocker"></div>
+            </div>
+        </div>
+
+        </div>
+
+</body>
+</html>
