@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dobi's Life | 嘟比的生活紀錄</title>
+    <title>Dobi's Life | 嘟比熊搗蛋記</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --milktea-bg: #F5EFE6;      /* 暖奶茶底色 */
-            --milkpowder-pink: #FCE7E7; /* 溫柔奶粉色 */
-            --accent-pink: #E8A8A8;     /* 質感乾燥粉 */
-            --text-caramel: #5C4B40;    /* 深焦糖咖啡色 */
+            --milktea-bg: #F5EFE6;      
+            --milkpowder-pink: #FCE7E7; 
+            --accent-pink: #E8A8A8;     
+            --text-caramel: #5C4B40;    
             --card-white: rgba(255, 255, 255, 0.95);
         }
 
@@ -20,7 +20,7 @@
             background-color: var(--milktea-bg);
             background-image: linear-gradient(180deg, var(--milkpowder-pink) 0%, var(--milktea-bg) 40%);
             color: var(--text-caramel);
-            font-family: 'Noto Sans TC', -apple-system, sans-serif;
+            font-family: 'Noto Sans TC', sans-serif;
             display: flex; flex-direction: column; align-items: center;
             padding-bottom: 60px;
         }
@@ -55,11 +55,32 @@
 
         .intro {
             font-size: 1.05rem; line-height: 2;
-            padding: 0 15px; margin-bottom: 30px;
+            padding: 0 15px; margin-bottom: 35px;
             font-weight: 300; opacity: 0.9;
         }
 
-        .video-feed { width: 92%; max-width: 500px; }
+        /* 🔥 🔥 核心補回：連到 YT 頻道的頂級按鈕 🔥 🔥 */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-pink);
+            color: #FFF;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 25px rgba(232, 168, 168, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .cta-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 15px rgba(232, 168, 168, 0.3);
+        }
+
+        .video-feed { width: 92%; max-width: 500px; margin-top: 20px; }
 
         .video-card {
             background: var(--card-white);
@@ -67,6 +88,7 @@
             padding: 20px;
             margin-bottom: 40px;
             box-shadow: 0 15px 35px rgba(92, 75, 64, 0.08);
+            position: relative;
         }
 
         .video-info {
@@ -80,11 +102,10 @@
             content: "♥"; margin-right: 10px; color: var(--accent-pink);
         }
 
-        /* 針對 YouTube Embed 的比例優化 */
         .iframe-container {
             position: relative;
             width: 100%;
-            padding-bottom: 177.77%; /* 9:16 比例 */
+            padding-bottom: 177.77%; 
             height: 0;
             border-radius: 20px;
             overflow: hidden;
@@ -102,6 +123,7 @@
             .avatar-circle { width: 240px; height: 240px; }
             .dobi-title { font-size: 2.8rem; letter-spacing: 8px; }
             .intro { font-size: 0.95rem; }
+            .cta-button { padding: 14px 35px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -119,6 +141,8 @@
             這裡是嘟比的搗蛋日記，也是最柔軟的日常。<br>
             願這份純粹的可愛，能輕輕地治癒你的每個瞬間。
         </p>
+
+        <a href="https://www.youtube.com/watch?v=ZTSlByHLMzk" class="cta-button" target="_blank">看更多嘟比作品 ✨</a>
     </section>
 
     <div class="video-feed">
@@ -133,8 +157,7 @@
                 </iframe>
             </div>
         </div>
-        
-        </div>
+    </div>
 
 </body>
 </html>
